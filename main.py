@@ -30,7 +30,8 @@ class Snake(object):
     def move(self):
         cur = self.get_head_position()
         x, y = self.direction
-        new = (((cur[0] + (x * GRIDSIZE)) % SCREEN_WIDTH), (cur[1] + (y * GRIDSIZE)) % SCREEN_HEIGHT)
+        new = (((cur[0] + (x * GRIDSIZE)) % SCREEN_WIDTH),
+               (cur[1] + (y * GRIDSIZE)) % SCREEN_HEIGHT)
         if len(self.positions) > 2 and new in self.positions[2:]:
             self.reset()
         else:
@@ -76,10 +77,12 @@ class Food(object):
         self.randomize_position()
 
     def randomize_position(self):
-        self.position = (random.randint(0, GRID_WIDTH-1) * GRIDSIZE, random.randint(0, GRID_HEIGHT-1) * GRIDSIZE)
+        self.position = (random.randint(0, GRID_WIDTH-1) * GRIDSIZE,
+                         random.randint(0, GRID_HEIGHT-1) * GRIDSIZE)
 
     def draw(self, surface):
-        r = pygame.Rect((self.position[0], self.position[1]), (GRIDSIZE, GRIDSIZE))
+        r = pygame.Rect((self.position[0], self.position[1]),
+                        (GRIDSIZE, GRIDSIZE))
         pygame.draw.rect(surface, self.color, r)
         pygame.draw.rect(surface, (93, 216, 228), r, 1)
 
